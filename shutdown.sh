@@ -14,6 +14,5 @@ while true; do
       shutdown -r now
     fi
   fi
-  echo 00
   sleep 1
 done
