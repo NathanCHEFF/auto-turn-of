@@ -26,15 +26,14 @@ exec("gpio mode {$out_p} out",$out, $res);
 exec("gpio write {$out_p} 1",$out, $res);		// podhvat rele
 
 while(1){
-	$out = '';
-	$res = '';
-	exec("gpio read {$inp_p}",$out, $res);
+  $out = '';
+  $res = '';
+  exec("gpio read {$inp_p}",$out, $res);
 
 
 	// if level on input is  LOW
   if( $out[0] != 1 ) {
-    var_dump($out[0]."<-");
-    file_put_contents('empty.txt',json_encode($out[0])."voltage on 29 pin not exists->".date("d.m.Y H:i:s")."\n",FILE_APPEND);
+    file_put_contents('avary.log',json_encode($out[0])."voltage on 29 pin not exists->".date("d.m.Y H:i:s")."\n",FILE_APPEND);
     `wall "voltage not exist on gpio. if voltage not turn on - system will be shutdown" -n`;
 		
     sleep(300);
