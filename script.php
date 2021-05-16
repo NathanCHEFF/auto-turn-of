@@ -23,7 +23,7 @@ $inp_p = 24;	// pin check voltage on input supply
 
 exec("gpio mode {$inp_p} in",$out, $res);
 exec("gpio mode {$out_p} out",$out, $res);
-exec("gpio write {$out_p} 1",$out, $res);		// podhvat rele
+exec("gpio write {$out_p} 1",$out, $res);    // podhvat rele
 
 while(1){
   $out = '';
@@ -31,7 +31,7 @@ while(1){
   exec("gpio read {$inp_p}",$out, $res);
 
 
-	// if level on input is  LOW
+  // if level on input is  LOW
   if( $out[0] != 1 ) {
     file_put_contents('avary.log',json_encode($out[0])."voltage on 29 pin not exists->".date("d.m.Y H:i:s")."\n",FILE_APPEND);
     `wall "voltage not exist on gpio. if voltage not turn on - system will be shutdown" -n`;
